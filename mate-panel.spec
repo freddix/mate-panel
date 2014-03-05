@@ -1,11 +1,11 @@
 Summary:	MATE panel
 Name:		mate-panel
-Version:	1.6.2
+Version:	1.8.0
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://pub.mate-desktop.org/releases/1.6/%{name}-%{version}.tar.xz
-# Source0-md5:	bffcebcc8edc10308799b3d339b67a53
+Source0:	http://pub.mate-desktop.org/releases/1.8/%{name}-%{version}.tar.xz
+# Source0-md5:	fe1a3ff81a5d12cdbb8f3882cbb4f188
 URL:		http://wiki.mate-desktop.org/mate-panel
 BuildRequires:	NetworkManager-devel
 BuildRequires:	autoconf
@@ -15,18 +15,17 @@ BuildRequires:	gtk+-devel
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
 BuildRequires:	libmateweather-devel
-BuildRequires:	libmatewnck-devel
 BuildRequires:	libtool
+BuildRequires:	libwnck2-devel
 BuildRequires:	mate-desktop-devel
-BuildRequires:	mate-doc-utils
 BuildRequires:	mate-menus-devel
 BuildRequires:	pkg-config
 BuildRequires:	polkit-devel
 BuildRequires:	python-libxml2
+BuildRequires:	yelp-tools
 Requires(post,postun):	/usr/bin/gtk-update-icon-cache
 Requires(post,postun):	glib-gio-gsettings
 Requires(post,postun):	hicolor-icon-theme
-Requires(post,postun):	rarian
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	libmateweather-data
 Requires:	mate-polkit
@@ -82,7 +81,6 @@ panel-applet API documentation.
 %{__automake}
 %configure \
 	--disable-schemas-compile	\
-	--disable-scrollkeeper		\
 	--disable-silent-rules		\
 	--disable-static		\
 	--with-html-dir=%{_gtkdocdir}
@@ -99,18 +97,16 @@ install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_datadir}/%{name}}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/{ca@valencia,crh,en@shaw,ha,ig,la,ps}
 
-%find_lang %{name} --with-mate --with-omf --all-name
+%find_lang %{name} --with-mate --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%scrollkeeper_update_post
 %update_icon_cache hicolor
 %update_gsettings_cache
 
 %postun
-%scrollkeeper_update_postun
 %update_icon_cache hicolor
 %update_gsettings_cache
 
