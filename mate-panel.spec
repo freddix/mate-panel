@@ -1,11 +1,11 @@
 Summary:	MATE panel
 Name:		mate-panel
-Version:	1.8.0
+Version:	1.8.1
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.8/%{name}-%{version}.tar.xz
-# Source0-md5:	fe1a3ff81a5d12cdbb8f3882cbb4f188
+# Source0-md5:	9354b0f9619b273c1432fd8490e6cbac
 URL:		http://wiki.mate-desktop.org/mate-panel
 BuildRequires:	NetworkManager-devel
 BuildRequires:	autoconf
